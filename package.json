@@ -1,0 +1,25 @@
+{
+  "name": "nairabet",
+  "version": "1.0.0",
+  "description": "An application to find trends in virtual match scores",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eze-nonso/Virtuals.git"
+  },
+  "keywords": [
+    "virtuals"
+  ],
+  "author": "eze-nonso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eze-nonso/Virtuals/issues"
+  },
+  "homepage": "https://github.com/eze-nonso/Virtuals#readme",
+  "dependencies": {
+    "puppeteer": "^1.4.0"
+  }
+}
