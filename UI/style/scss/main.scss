@@ -1,0 +1,53 @@
+
+$greenery: rgb(113, 207, 113);
+$bckimage: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('../assets/images/cta.jpg');
+
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background: {
+        // color: $greenery;
+    }
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding-top: 50px;
+
+    // &::before {
+    //     content: '';
+    //     position: absolute;
+    //     display: block;
+    //     background-color: rgba(255,255,255,0.5);
+    //     border: solid red 1px;
+    //     top: 0;
+    //     bottom: 0;
+    //     left: 0;
+    //     right: 0;
+    // }
+}
+
+#main-header {
+    height: 50px;
+    background-color: #FFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.jumbotron {
+    background: {
+        image: $bckimage;
+        repeat: no-repeat;
+        attachment: fixed;
+        size: cover;
+    }
+
+    height: 400px;
+}
