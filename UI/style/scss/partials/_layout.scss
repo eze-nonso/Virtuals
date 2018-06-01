@@ -1,0 +1,125 @@
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+%flex-container-padding {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+%mx-auto {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+%flex-col-margin {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+%dev-border {
+    border: 1px solid red;
+}
+
+%flex-margin-neg {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+@mixin container-max-width($map) {
+    @include media-query-loop($map, max-width);
+}
+
+@mixin media-query-loop($map, $prop) {
+    @each $breakpoint, $value in $map {
+        @include media-query-template($breakpoint) {
+            #{$prop}: #{$value};
+        }
+    }
+}
+
+@mixin media-query-template($breakpoint) {
+    @media only screen and (max-width:#{$breakpoint}) {
+        @content;
+    }
+} 
+
+/* A container with some padding */
+$container-media-max-widths: (
+    #{$breakpoint-xl}: 1000px,
+    #{$breakpoint-lg}: 800px,
+    #{$breakpoint-md}: 600px,
+    #{$breakpoint-sm}: 350px
+);
+
+.container {
+    @extend %flex-container-padding;
+    @extend %dev-border;
+    @extend %mx-auto;
+    @include container-max-width(
+        $container-media-max-widths
+    );
+    width: 100%;
+}
+
+.container-fluid {
+    @extend %flex-container-padding;
+    @extend %dev-border;
+    @extend %mx-auto;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    @extend %flex-margin-neg;
+    @extend %dev-border;    
+}
+
+[class^='col'] {
+    @extend %flex-col-margin;
+    @extend %dev-border;
+    height: 100px;
+}
+
+@mixin col-flex($num) {
+
+    $breakpoints: (
+        xl: $breakpoint-xl,
+        lg: $breakpoint-lg,
+        md:  $breakpoint-md,
+        sm: $breakpoint-sm
+    );
+
+    $common-val: 0 0 ($num/12 * 100%);
+    
+    .col-#{$num} {
+        flex: $common-val;
+    }
+
+    @each $suf, $bp in $breakpoints {
+        .col-#{$suf}-#{$num} {
+            @include media-query-template($bp) {
+                flex: $common-val;
+            }
+        }
+    }
+}
+
+// col classes with queries inclusive
+@include col-flex(12);
+@include col-flex(11);
+@include col-flex(10);
+@include col-flex(9);
+@include col-flex(8);
+@include col-flex(7);
+@include col-flex(6);
+@include col-flex(6);
+@include col-flex(5);
+@include col-flex(4);
+@include col-flex(3);
+@include col-flex(2);
+@include col-flex(1);
+
